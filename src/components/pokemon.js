@@ -37,24 +37,37 @@ class Pokemon extends Component {
   }
 
   render() {
+    const map = this.props.filterMap;
+    let toBeRendered = false;
+    let types = this.state.types.map(ind => (
+      ind.type.name
+    ));
+    console.log(types);
+    for(let k of map.keys()){
+      if(types.includes(k) && map.get(k) !== false){
+        toBeRendered = true;
+      }
+    }
     return(
+    <>{toBeRendered &&
     <div className='col-md-4'>
       <div className='card mb-4 shadow-sm' >
-        <Sprite imgSrc={this.state.img_src} />
+        <Sprite imgSrc={this.state.img_src} alt={this.state.pokemon_name}/>
         <PokeID name={this.state.pokemon_name} id={this.state.pokemon_id} types={this.state.types} />
       </div>
     </div>
+    }</>
     );
   }
 }
 
 
 
-const Sprite = ({imgSrc}) => {
+const Sprite = ({imgSrc, alt}) => {
 
   return (
     <div className='bd-placeholder-img'>
-      <img className='card-img-top' src={imgSrc} />
+      <img className='card-img-top' alt={alt} src={imgSrc} />
     </div>
   );
 }
