@@ -9,7 +9,7 @@ class PokemonList extends Component {
         <div className='row'>
           {
             pokemon.map(pk => (
-              <Pokemon  filterMap={this.props.filterMap} key={pk} id={pk} />
+              <Pokemon  filter={this.props.filter} filterMap={this.props.filterMap} key={pk} id={pk} />
             ))
           }
         </div>
@@ -18,12 +18,12 @@ class PokemonList extends Component {
   }
 }
 
-const PokemonListContainer = ({numberOfPokemon, filterMap}) => {
+const PokemonListContainer = ({numberOfPokemon, filterMap, filter}) => {
 
 
   return (
     <div className='album py-5 bg-light'>
-      <PokemonList filterMap={filterMap} numberOfPokemon={numberOfPokemon} />
+      <PokemonList filter={filter}  filterMap={filterMap} numberOfPokemon={numberOfPokemon} />
     </div>
   )
 }

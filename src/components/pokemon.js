@@ -38,11 +38,10 @@ class Pokemon extends Component {
 
   render() {
     const map = this.props.filterMap;
-    let toBeRendered = false;
+    let toBeRendered = !this.props.filter ? true : false;
     let types = this.state.types.map(ind => (
       ind.type.name
-    ));
-    console.log(types);
+    )); 
     for(let k of map.keys()){
       if(types.includes(k) && map.get(k) !== false){
         toBeRendered = true;

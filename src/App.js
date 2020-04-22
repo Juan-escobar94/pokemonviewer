@@ -44,13 +44,14 @@ class FilterControls extends React.Component {
                   filterMode: false}
     this.handleChange = this.handleChange.bind(this);
     this.handleFilter = this.handleFilter.bind(this);
+    this.handleReset = this.handleReset.bind(this);
   }
 
 
   handleChange(e) {
     const item = e.target.name;
     const isChecked = e.target.checked;
-    this.setState(prevState => ({ checkedItems: prevState.checkedItems.set(item, isChecked) }));
+    this.setState(prevState => ({ checkedItems: prevState.checkedItems.set(item, isChecked)}));
   }
 
   handleFilter(e) {
@@ -70,10 +71,10 @@ class FilterControls extends React.Component {
       <section className='jumbotron' style={{marginBottom: '0em'}}>
         <div className='container'>
           <h2 className='jumbotron-heading text-center'>Browse and Filter Pokemons</h2>
-          <CheckboxContainer handleChange={this.handleChange} handleFilter={this.handleFilter} />
+          <CheckboxContainer handleChange={this.handleChange} handleFilter={this.handleFilter}  handleReset={this.handleReset}/>
         </div>
       </section>
-      <PokemonListContainer numberOfPokemon={DISPLAY_POKEMONS} filterMap={this.state.checkedItems} />
+      <PokemonListContainer filter={this.state.filterMode} numberOfPokemon={DISPLAY_POKEMONS} filterMap={this.state.checkedItems} />
     </>
     );
   }
@@ -94,6 +95,8 @@ class CheckboxContainer extends React.Component {
       </div>
       <div className="text-center">
             <a href="#" class="btn btn-primary my-2" onClick={this.props.handleFilter}>Filter</a>
+            &nbsp;  
+            <a href="#" class="btn btn-secondary my-2" onClick={this.props.handleReset}>Reset</a>
       </div>
     </>
     );
