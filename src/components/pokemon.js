@@ -22,7 +22,7 @@ class Pokemon extends Component {
           this.setState({
             isLoaded: true,
             img_src: result["sprites"]["front_default"],
-            pokemon_name: result["name"],
+            pokemon_name: result["name"].charAt(0).toUpperCase() + result["name"].substring(1),
             pokemon_id: result["id"],
             types: result["types"]
           });
@@ -38,8 +38,8 @@ class Pokemon extends Component {
 
   render() {
     return(
-    <div className=''>
-      <div className='card bg-light' style={{width: '18rem'}}>
+    <div className='col-md-4'>
+      <div className='card mb-4 shadow-sm' >
         <Sprite imgSrc={this.state.img_src} />
         <PokeID name={this.state.pokemon_name} id={this.state.pokemon_id} types={this.state.types} />
       </div>
@@ -48,21 +48,12 @@ class Pokemon extends Component {
   }
 }
 
-const Pokemonfn = (props) => {
-  const {sprite, pokemon_name, pokemon_id, types} = props;
-  return(
-    <div className='card h-100' style='width: 18rem;'>
-      <Sprite imgSrc={sprite}/>
-      <PokeID name={pokemon_name} id={pokemon_id} types={types}/>
-    </div>
-  );
-}
 
 
 const Sprite = ({imgSrc}) => {
 
   return (
-    <div className=''>
+    <div className='bd-placeholder-img'>
       <img className='card-img-top' src={imgSrc} />
     </div>
   );
@@ -71,9 +62,9 @@ const Sprite = ({imgSrc}) => {
 const PokeID = ({name, types, id}) => {
   return (
     <>
-        <h5 class='card-title d-flex justify-content-around'>
+        <h5 className='card-title d-flex justify-content-around'>
           {name}
-          <small class="text-muted"> &nbsp; ID: {id}</small>
+          <small className="text-muted"> &nbsp; ID: {id}</small>
         </h5>
       { types &&
       <div>  
@@ -89,5 +80,4 @@ const PokeID = ({name, types, id}) => {
   );
 }
 
-export default Pokemonfn;
 export {Pokemon};

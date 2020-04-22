@@ -10,11 +10,11 @@ class PokemonList extends Component {
      pokemon.push(i);
    }
     return (
-      <div class=''>
-        <div className='card-deck'>
+      <div className='album py-5 bg-light'>
+        <div className='row'>
           {
             pokemon.map(pk => (
-              <Pokemon id={pk} />
+              <Pokemon key={pk} id={pk} />
             ))
           }
         </div>
@@ -23,5 +23,18 @@ class PokemonList extends Component {
   }
 }
 
+const PokemonListContainer = ({numberOfPokemon}) => {
 
-export default PokemonList;
+
+  return (
+    <div className='container'>
+      <PokemonList numberOfPokemon={numberOfPokemon} />
+    </div>
+  )
+}
+
+
+
+
+
+export default PokemonListContainer;
