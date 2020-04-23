@@ -8,7 +8,7 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
-const DISPLAY_POKEMONS = 15;
+const DISPLAY_POKEMONS = 150;
 
 function App() {
   return (
@@ -137,7 +137,7 @@ const CheckBox = ({map, onChange, children, name}) => {
 
 const Footer = () => {
   return(
-  <footer className="text-muted">
+  <footer className="text-muted fixed-bottom">
     <div className="container">
     Icons made by <a href="https://www.flaticon.com/authors/darius-dan" title="Darius Dan">Darius Dan</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
     </div>

@@ -57,8 +57,8 @@ const PokemonDetailed = () => {
 
 
     return(
-      <div className="container">
-         <div className="card mb-3" style={{maxWidth: '800px'}}>
+      <div className="container" style={{marginTop: '3rem'}}>
+         <div className="card mb-3" style={{maxWidth: '900px'}}>
             <div className="row no-gutters">
               <div className="col-md-4">
                  <img src={data.img_src} className="card-img" alt="" />
