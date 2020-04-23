@@ -81,7 +81,7 @@ const PokeID = ({name, types, id}) => {
       { types &&
       <div>  
         {/* <div className='card-text d-flex justify-content-center'>Type{types.length > 1 && 's'}</div> */}
-          <ul className='card text list-group list-group-flush'>
+          <ul className='card-text list-group list-group-flush'>
           {types.map(type => (
             <li  className='list-group-item' key={type.type.name}>{type.type.name}</li>
           ))}
