@@ -1,27 +1,42 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import PokemonListContainer from './components/pokemonlist';
+import PokemonDetailed from './components/pokemondetailed'
 import './App.css';
-//const URL_API = 'https://pokeapi.co/api/v2/pokemon/';
-const DISPLAY_POKEMONS = 150;
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
+const DISPLAY_POKEMONS = 15;
 
 function App() {
   return (
-    <>
+    <Router>
     <Header />
-    <main role='main'>
-      <FilterControls />
-    </main>
-    </>
+      <Switch>
+        <Route path="/pokemon/:id">
+          <PokemonDetailed />
+        </Route>
+        <Route path="/">
+          <main role='main'>
+            <FilterControls />
+          </main>
+        </Route>
+        
+      </Switch>
+    <Footer />
+    </Router>
   );
 }
 
 const Header = () => {
   return(
     <header>
-      <div className='navbar navbar-dark bg-dark shadow-sm'>
+      <div className='navbar navbar-dark navbar-fixed-top bg-dark shadow-sm'>
         <div className='container d-flex justify-content-between'>
           <div className='navbar-brand d-flex align-items-center'>
+            <img className="mr-2" width="30" height="30" alt="" src="https://image.flaticon.com/icons/svg/1752/1752772.svg"></img>
             <strong>Pokemon Browser</strong>
           </div>  
         </div>
@@ -95,9 +110,9 @@ class CheckboxContainer extends React.Component {
       }
       </div>
       <div className="text-center button-group">
-            <a href="#" class="btn btn-primary my-2" onClick={this.props.handleFilter}>Filter</a>
+            <button  class="btn btn-primary my-2" onClick={this.props.handleFilter}>Filter</button>
             &nbsp;  
-            <a href="#" class="btn btn-secondary my-2" onClick={this.props.handleReset}>Reset</a>
+            <button class="btn btn-secondary my-2" onClick={this.props.handleReset}>Reset</button>
       </div>
     </>
     );
@@ -120,6 +135,14 @@ const CheckBox = ({map, onChange, children, name}) => {
 }
 
 
-
+const Footer = () => {
+  return(
+  <footer className="text-muted">
+    <div className="container">
+    Icons made by <a href="https://www.flaticon.com/authors/darius-dan" title="Darius Dan">Darius Dan</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
+    </div>
+  </footer>
+  );
+}
 
 export default App;
