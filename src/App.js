@@ -1,6 +1,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import PokemonListContainer from './components/pokemonlist';
+import './App.css';
 //const URL_API = 'https://pokeapi.co/api/v2/pokemon/';
 const DISPLAY_POKEMONS = 15;
 
@@ -86,14 +87,14 @@ class CheckboxContainer extends React.Component {
   render() {
     return (
     <>
-      <div  className="row">
+      <div  id="filter-checkboxes" className="row">
       {
         types.map(type => (
           <CheckBox onChange={this.props.handleChange} name={type}>{type}</CheckBox>
         ))
       }
       </div>
-      <div className="text-center">
+      <div className="text-center button-group">
             <a href="#" class="btn btn-primary my-2" onClick={this.props.handleFilter}>Filter</a>
             &nbsp;  
             <a href="#" class="btn btn-secondary my-2" onClick={this.props.handleReset}>Reset</a>
