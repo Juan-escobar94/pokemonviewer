@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import PokemonListContainer from './components/pokemonlist';
 import './App.css';
 //const URL_API = 'https://pokeapi.co/api/v2/pokemon/';
-const DISPLAY_POKEMONS = 15;
+const DISPLAY_POKEMONS = 150;
 
 function App() {
   return (
@@ -62,7 +62,7 @@ class FilterControls extends React.Component {
 
   handleReset(e) {
     e.preventDefault();
-    this.setState({filterMode: false});
+    this.setState({checkedItems: new Map (), filterMode: false});
   }
 
 
@@ -72,7 +72,7 @@ class FilterControls extends React.Component {
       <section className='jumbotron' style={{marginBottom: '0em'}}>
         <div className='container'>
           <h2 className='jumbotron-heading text-center'>Browse and Filter Pokemons</h2>
-          <CheckboxContainer handleChange={this.handleChange} handleFilter={this.handleFilter}  handleReset={this.handleReset}/>
+          <CheckboxContainer handleChange={this.handleChange} map={this.state.checkedItems} handleFilter={this.handleFilter}  handleReset={this.handleReset}/>
         </div>
       </section>
       <PokemonListContainer filter={this.state.filterMode} numberOfPokemon={DISPLAY_POKEMONS} filterMap={this.state.checkedItems} />
@@ -90,7 +90,7 @@ class CheckboxContainer extends React.Component {
       <div  id="filter-checkboxes" className="row">
       {
         types.map(type => (
-          <CheckBox onChange={this.props.handleChange} name={type}>{type}</CheckBox>
+          <CheckBox onChange={this.props.handleChange} map={this.props.map} name={type}>{type}</CheckBox>
         ))
       }
       </div>
@@ -107,10 +107,11 @@ class CheckboxContainer extends React.Component {
 
 
 
-const CheckBox = ({onChange, children, name}) => {
+const CheckBox = ({map, onChange, children, name}) => {
+  let checked = map.get(name);
   return (
     <div className="form-check col-md-3">
-              <input className="form-check-input" name={name} type="checkbox"  onChange={onChange} id="defaultCheck1" />
+              <input className="form-check-input" checked={checked} name={name} type="checkbox"  onChange={onChange} id="defaultCheck1" />
               <label className="form-check-label" hmtlFor="defaultCheck1">
                 {children}
               </label>
