@@ -8,7 +8,7 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
-const DISPLAY_POKEMONS = 150;
+const DISPLAY_POKEMONS = 10;
 
 function App() {
   return (
@@ -33,17 +33,25 @@ function App() {
 const Header = () => {
   return(
     <header>
-      <div className='navbar navbar-dark navbar-fixed-top bg-dark shadow-sm'>
+      <div className='navbar navbar-dark fixed-top bg-dark shadow-sm'>
         <div className='container d-flex justify-content-between'>
-          <div className='navbar-brand d-flex align-items-center'>
+          <a href="/" className='navbar-brand d-flex align-items-center'>
             <img className="mr-2" width="30" height="30" alt="" src="https://image.flaticon.com/icons/svg/1752/1752772.svg"></img>
             <strong>Pokemon Browser</strong>
-          </div>  
+          </a>  
+        </div>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+             <a class="nav-link" href="/pokemon/3/">Detail <span class="sr-only">(current)</span></a>
+          </li>  
+        </ul>
         </div>
       </div>
     </header>
   );
 }
+
 
 
 const types = [
@@ -137,7 +145,7 @@ const CheckBox = ({map, onChange, children, name}) => {
 
 const Footer = () => {
   return(
-  <footer className="text-muted fixed-bottom">
+  <footer className="text-muted float-bottom">
     <div className="container">
     Icons made by <a href="https://www.flaticon.com/authors/darius-dan" title="Darius Dan">Darius Dan</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
     </div>

@@ -5,12 +5,6 @@ import {useParams} from 'react-router-dom';
 
 
 const PokemonDetailed = () => {
-//   const {error, setError} = useState(null);
-//   const {isLoaded, setIsLoaded} = useState(false);
-//   const {types, setTypes} = useState([]);
-//   const {imgSrc, setImgSrc} = useState("");
-//   const {pokemonId, setPokemonId} = useState("");
-//   const {pokemonName, setPokemonName} = useState("");
   const [data, setData] = useState({
       error: null,
       isLoaded: false,
